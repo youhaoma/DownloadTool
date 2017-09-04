@@ -269,11 +269,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Images\BaiduPanDownloadWpf.ico" />
     <Resource Include="Assets\Images\DefaultUserHead.jpg" />
-    <Resource Include="Assets\Images\DevGroupNo.jpg" />
-    <Resource Include="Assets\Images\DingpingZhangHead.jpg" />
-    <Resource Include="Assets\Images\DonateLink.jpg" />
     <Resource Include="Assets\Images\FileTypes\ApkType.png" />
     <Resource Include="Assets\Images\FileTypes\DocType.png" />
     <Resource Include="Assets\Images\FileTypes\ExeType.png" />
@@ -289,9 +285,6 @@
     <Resource Include="Assets\Images\FileTypes\TxtType.png" />
     <Resource Include="Assets\Images\FileTypes\VideoType.png" />
     <Resource Include="Assets\Images\FileTypes\XlsType.png" />
-    <Resource Include="Assets\Images\Mrs4sHead.jpg" />
-    <Resource Include="Assets\Images\NewYear.jpg" />
-    <Resource Include="Assets\Images\YourName.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\Bob Brents.jpg" />
