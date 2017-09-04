@@ -8,8 +8,8 @@
 
 ![image](https://raw.githubusercontent.com/youhaoma/DownloadTool/master/BaiduPan/Assets/Images/ImageShot/SignIn_1.png)
 ![image](https://raw.githubusercontent.com/youhaoma/DownloadTool/master/BaiduPan/Assets/Images/ImageShot/SignIn_2.png)
-![image]https://raw.githubusercontent.com/youhaoma/DownloadTool/master/BaiduPan/Assets/Images/ImageShot/MainWindow_1.png
-![image]https://raw.githubusercontent.com/youhaoma/DownloadTool/master/BaiduPan/Assets/Images/ImageShot/MainWindow_2.png
+![image](https://raw.githubusercontent.com/youhaoma/DownloadTool/master/BaiduPan/Assets/Images/ImageShot/MainWindow_1.png)
+![image](https://raw.githubusercontent.com/youhaoma/DownloadTool/master/BaiduPan/Assets/Images/ImageShot/MainWindow_2.png)
 ![image](https://raw.githubusercontent.com/youhaoma/DownloadTool/master/BaiduPan/Assets/Images/ImageShot/DownloadPage_1.png)
 
 
