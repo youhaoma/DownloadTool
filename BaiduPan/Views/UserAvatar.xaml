@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="BaiduPan.Views.UserAvatar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BaiduPan.Views"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI" 
+              xmlns:res="clr-namespace:BaiduPan.Assets"
+             mc:Ignorable="d" Background="Transparent"
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            
+            <GeometryGroup x:Key="AvatarEllipse">
+                <EllipseGeometry RadiusX="50" RadiusY="50" Center="50, 50"/>
+            </GeometryGroup>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Height="25" Content="{x:Static res:UiStringResources.WallPaper}"   Margin="0, 0, 10, 0"
+                 Command="{Binding ChangeWallPaperCmd}" Padding="0"
+                 Background="Transparent" Foreground="Black"            
+                Template="{StaticResource  ChromelessButtonTemplate}">
+
+
+
+        </Button>
+
+
+        <Grid Grid.Column="1" Height="50" Width="50">
+            <ToggleButton x:Name="AvatarImageBtn"                                       
+                      Style="{x:Null}" BorderThickness="0">
+                <Image  Source="{Binding UserMounted.AvatarUrl}" />
+            </ToggleButton>
+
+            <Popup x:Name="UserDetailPop" 
+               AllowsTransparency="True"
+                StaysOpen="False"
+               IsOpen="{Binding Path=IsChecked, ElementName=AvatarImageBtn,Mode=OneWay}">
+                <material:Card Background="White" HorizontalAlignment="Center" Width="160">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Background="#03a9f4" HorizontalAlignment="Stretch" >
+                            <Grid Height="100" Width="100"  HorizontalAlignment="Center"
+                              Margin="5">
+                                <Image Source="{Binding UserMounted.AvatarUrl}"                                    
+                                   Clip="{StaticResource AvatarEllipse}"/>
+                                <Ellipse Height="100" Width="100"/>
+                            </Grid>
+                            <Button   HorizontalAlignment="Right"  Width="30"
+                                      VerticalAlignment="Top" Margin="3"
+                                      Content="out" FontSize="10" 
+                                      HorizontalContentAlignment="Center"
+                                      VerticalContentAlignment="Center"
+                                      Padding="0"
+                                      Background="Transparent" 
+                                      Foreground="Black"
+                                      Command="{Binding SignOutCmd}"/>
+                        </Grid>
+
+                        <TextBlock Grid.Row="1" HorizontalAlignment="Center"
+                           Text="{Binding UserMounted.UserName}" 
+                           Margin="10"/>
+                        <StackPanel Grid.Row="2" Margin="10">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock Text="{Binding Used}" />
+                                <TextBlock Text="/"/>
+                                <TextBlock Text="{Binding Total}"/>
+                            </StackPanel>
+                            <ProgressBar    Width="100"                         
+                            Height="4" Margin="5, 5, 0, 0"
+                            Value="{Binding Used, Mode=OneWay}" 
+                            Maximum="{Binding Total, Mode=OneWay}"/>
+                        </StackPanel>
+                    </Grid>
+                </material:Card>
+            </Popup>
+        </Grid>
+    </Grid>
+</UserControl>

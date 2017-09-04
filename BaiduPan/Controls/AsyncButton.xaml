@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="BaiduPan.Controls.AsyncButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BaiduPan.Controls"
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" Name="AsyncBtn"
+             d:DesignHeight="28" d:DesignWidth="28">
+    <Grid>
+        <mui:ModernButton HorizontalAlignment="Center" VerticalAlignment="Center" 
+                          Command="{Binding Command, ElementName=AsyncBtn}"
+                          CommandParameter="{Binding CommandParameter, ElementName=AsyncBtn}"
+                          IconData="{Binding IconData, ElementName=AsyncBtn}"
+                          IconWidth="{Binding IconWidth, ElementName=AsyncBtn}"
+                          IconHeight="{Binding IconHeight, ElementName=AsyncBtn}"
+                          Content="{Binding ButtonTip, ElementName=AsyncBtn}">
+            <mui:ModernButton.Style>
+                <Style BasedOn="{StaticResource {x:Type mui:ModernButton}}" TargetType="{x:Type mui:ModernButton}">
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsWorking, ElementName=AsyncBtn}" Value="True"/>
+                                <Condition Binding="{Binding IsAutoHideButton, ElementName=AsyncBtn}" Value="True"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </mui:ModernButton.Style>
+        </mui:ModernButton>
+        <mui:ModernProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="0" MinWidth="0" Margin="2"
+                                Height="{Binding ProgressRingHeight, ElementName=AsyncBtn}"
+                                Width="{Binding ProgressRingWidth, ElementName=AsyncBtn}"
+                                IsActive="{Binding IsWorking, ElementName=AsyncBtn}" 
+                                Style="{Binding ProgressBarStyle, ElementName=AsyncBtn, TargetNullValue={StaticResource CircleProgressRingStyle}}"/>
+    </Grid>
+</UserControl>

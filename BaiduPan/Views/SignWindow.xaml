@@ -1,0 +1,159 @@
+﻿<metro:MetroWindow x:Class="BaiduPan.Views.SignWindow"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:local="clr-namespace:BaiduPan"
+                   xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+                   xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"                    
+                   xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+                   xmlns:prism="http://prismlibrary.com/"
+                   prism:ViewModelLocator.AutoWireViewModel="True"
+                   mc:Ignorable="d" Background="White"
+                   Title="SignIn" Height="500" Width="800"
+                   BorderThickness="1" 
+                   SaveWindowPosition="True"                   
+                   GlowBrush="{DynamicResource AccentColorBrush}"
+                   NonActiveGlowBrush="#CDFF0000"
+                   WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <GeometryGroup x:Key="AvatarEllipse">
+                <EllipseGeometry RadiusX="40" RadiusY="40" Center="40, 40"/>
+            </GeometryGroup>
+
+        </ResourceDictionary>
+
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ListBox x:Name="UserListBox" Grid.Row="1" SelectedItem="{Binding SelectedItemUser}"
+                 ItemsSource="{Binding Users,Mode=TwoWay}" >
+            <ListBox.Template>
+                <ControlTemplate>
+                    <ItemsPresenter/>                    
+                </ControlTemplate>
+            </ListBox.Template>
+
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Style.Setters>
+                        <Setter Property="Margin" Value="5"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                    </Style.Setters>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                        </Trigger>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                        </Trigger>
+                        
+                    </Style.Triggers>
+                    
+                </Style>
+            </ListBox.ItemContainerStyle>
+            
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Horizontal"/>                     
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            
+            <ListBox.ItemTemplate>
+                <DataTemplate >
+                    <material:Card x:Name="UserCard" Width="180" Background="White" 
+                                       VerticalAlignment="Stretch">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <ToggleButton IsChecked="{Binding IsSelected,RelativeSource={RelativeSource AncestorType=ListBoxItem},
+                                Mode=TwoWay}" 
+                                              Height="30" Width="30"
+                                              Style="{StaticResource MaterialDesignActionAccentToggleButton}"
+                                              Content="{Binding Code}" HorizontalAlignment="Left" 
+                                              Background="DeepSkyBlue"
+                                              Margin="5"/>
+
+                            <TextBlock Grid.Row="0" HorizontalAlignment="Center"
+                                    Text="{Binding UserName}" 
+                                    Margin="10"/>
+                            
+                            <Grid Grid.Row="1" Height="80" Width="80" 
+                                      HorizontalAlignment="Center">
+                                <Image Source="{Binding AvatarUrl}"                                                 
+                                           Clip="{StaticResource AvatarEllipse}"/>
+                                <Ellipse Height="80" Width="80"/>
+                            </Grid>
+
+                            <Button Grid.Row="2" Content="Delete" 
+                                    Command="{Binding RemoveUserCmd}"
+                                    Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                                    BorderBrush="#ffd600" Background="#ffd600" 
+                                    Foreground="#DD000000" Margin="3" 
+                                    HorizontalAlignment="Right"/>
+
+                        </Grid>
+                    </material:Card>
+
+
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding IsSelected,RelativeSource={RelativeSource AncestorType=ListBoxItem}}"  
+                                     Value="True">
+                            <Setter  TargetName="UserCard" Property="Background" Value="#FFDeDeDe" />
+                        </DataTrigger>
+                    </DataTemplate.Triggers>      
+                    
+                </DataTemplate>
+
+              
+
+            </ListBox.ItemTemplate>          
+            
+        </ListBox>
+
+        
+        <StackPanel Grid.Row="2" Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button x:Name="LoginBtn" Width="80" 
+                    VerticalAlignment="Center" Content="登陆"
+                    Command="{Binding SignIn}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=metro:MetroWindow}}"
+                   />
+
+            <Button x:Name="NewAccountBtn" VerticalAlignment="Center"
+                    Width="80" Content="新账号" Margin="10, 0, 0, 0"
+                    Command="{Binding NewAccountCmd}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=metro:MetroWindow}}"/>
+
+        </StackPanel>
+
+
+
+
+    </Grid>
+</metro:MetroWindow>
