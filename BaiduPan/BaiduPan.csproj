@@ -304,8 +304,8 @@
     <Resource Include="Assets\Images\ImageShot\DownloadPage_1.png" />
     <Resource Include="Assets\Images\ImageShot\MainWindow_1.png" />
     <Resource Include="Assets\Images\ImageShot\MainWindow_2.png" />
-    <Resource Include="Assets\Images\ImageShot\SingnIn_1.png" />
-    <Resource Include="Assets\Images\ImageShot\SingnIn_2.png" />
+    <Resource Include="Assets\Images\ImageShot\SignIn_1.png" />
+    <Resource Include="Assets\Images\ImageShot\SignIn_2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
