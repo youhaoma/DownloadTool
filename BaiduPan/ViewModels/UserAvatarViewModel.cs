@@ -78,7 +78,7 @@ namespace BaiduPan.ViewModels
                 
             }
 
-            WallPaper = wallpaper.Count > 0 ? wallpaper.FirstOrDefault().img_1024_768 : "/Assets/Images/Bob Brents.jpg";
+            WallPaper = wallpaper.Count > 0 ? wallpaper.FirstOrDefault().img_1024_768 : "/Assets/Images/Wallpaper.jpg";
 
            
 

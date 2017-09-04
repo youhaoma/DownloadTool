@@ -161,9 +161,6 @@
     <Compile Include="Views\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Test.xaml.cs">
-      <DependentUpon>Test.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\UserAvatar.xaml.cs">
       <DependentUpon>UserAvatar.xaml</DependentUpon>
     </Compile>
@@ -245,10 +242,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Test.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\UserAvatar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -287,7 +280,7 @@
     <Resource Include="Assets\Images\FileTypes\XlsType.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Images\Bob Brents.jpg" />
+    <Resource Include="Assets\Images\Wallpaper.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\download.png" />
@@ -306,6 +299,13 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\ImageShot\DownloadPage_1.png" />
+    <Resource Include="Assets\Images\ImageShot\MainWindow_1.png" />
+    <Resource Include="Assets\Images\ImageShot\MainWindow_2.png" />
+    <Resource Include="Assets\Images\ImageShot\SingnIn_1.png" />
+    <Resource Include="Assets\Images\ImageShot\SingnIn_2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
